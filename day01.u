@@ -1,0 +1,13 @@
+namespace day01
+
+countIncreases : [Int] -> Int
+countIncreases lst =
+    slidingPairs lst |> List.count (cases (a, b) -> b > a) |> Nat.toInt
+
+main : '{IO, Exception} ()
+main = do
+    input = readLines "input01.txt" |> textToInts
+    n1 = input |> countIncreases
+    printLine ("Solution 1: " ++ (Int.toText n1))
+    n2 = input |> slidingWindow 3 |> List.map sumInts |> countIncreases
+    printLine ("Solution 2: " ++ (Int.toText n2))

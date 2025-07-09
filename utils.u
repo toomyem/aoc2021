@@ -1,0 +1,18 @@
+namespace utils
+
+readLines : Text ->{IO, Exception} [Text]
+readLines fileName =
+    readLines0 f acc =
+        use List +:
+        if isEOF f then acc
+        else readLines0 f (getLine f +: acc)
+    f = open (FilePath fileName) Read
+    readLines0 f [] |> List.reverse
+
+textToInts : [Text] -> [Int]
+textToInts lst = List.map (t -> t |> Int.fromText |> Optional.getOrBug "expected int") lst
+
+sumInts : [Int] -> Int
+sumInts lst = 
+    use Int +
+    List.foldLeft (x acc -> x + acc) (Nat.toInt 0) lst
