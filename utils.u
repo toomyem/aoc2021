@@ -15,4 +15,4 @@ toInts lst = List.map (t -> t |> Int.fromText |> Optional.getOrBug "expected int
 sumInts : [Int] -> Int
 sumInts lst = 
     use Int +
-    List.foldLeft (x acc -> x + acc) (Nat.toInt 0) lst
+    List.foldLeft (x acc -> x + acc) +0 lst
