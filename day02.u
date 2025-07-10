@@ -5,12 +5,12 @@ type Pos = Pos Nat Nat Nat
 
 textToMove : Text -> Move
 textToMove s =
-    p = Text.split ? s
+    p = Text.split ?\s s
     match p with
-      ["forward", n] -> Forward (fromTextOrFail n)
-      ["down", n] -> Down (fromTextOrFail n)
-      ["up", n] -> Up (fromTextOrFail n)
-      _ -> bug "unexpected"
+        ["forward", n] -> Forward (fromTextOrFail n)
+        ["down", n] -> Down (fromTextOrFail n)
+        ["up", n] -> Up (fromTextOrFail n)
+        _ -> bug ("unexpected: " ++ s)
 
 move : Pos -> Move -> Pos
 move p m =
