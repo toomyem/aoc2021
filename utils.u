@@ -10,9 +10,8 @@ readLines fileName =
     readLines0 f [] |> List.reverse
 
 toInts : [Text] -> [Int]
-toInts lst = List.map (t -> t |> Int.fromText |> Optional.getOrBug "expected int") lst
+toInts lst = map (t -> t |> fromText |> getOrBug "expected int") lst
 
 sumInts : [Int] -> Int
 sumInts lst = 
-    use Int +
     List.foldLeft (x acc -> x + acc) +0 lst
