@@ -1,2 +1,5 @@
-.unisonHistory
-input*
+*.beam
+*.ez
+/build
+erl_crash.dump
+input*.txt
