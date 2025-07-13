@@ -1,5 +1,3 @@
-*.beam
-*.ez
-/build
-erl_crash.dump
+.session
 input*.txt
+build/
