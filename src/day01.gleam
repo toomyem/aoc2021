@@ -1,17 +1,7 @@
 import gleam/int
 import gleam/io
 import gleam/list
-import gleam/string
 import utils
-
-fn to_int_list(lst: List(String)) -> List(Int) {
-  list.map(lst, fn(x) {
-    case int.parse(string.trim(x)) {
-      Ok(v) -> v
-      Error(_) -> panic as { "Unexpected: " <> x }
-    }
-  })
-}
 
 fn sum_ints(lst: List(Int)) -> Int {
   list.fold(lst, 0, fn(a, b) { a + b })
@@ -19,8 +9,8 @@ fn sum_ints(lst: List(Int)) -> Int {
 
 pub fn solve() -> Nil {
   let input =
-    utils.read_lines()
-    |> to_int_list
+    utils.read_input()
+    |> utils.to_int_list
 
   let n1 =
     input
